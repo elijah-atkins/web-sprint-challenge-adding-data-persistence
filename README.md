@@ -105,9 +105,40 @@ In your solution, it is essential that you follow best practices and produce cle
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on the following optional goals:
 
 - [ ] Add an endpoint to get a list of project resources.
+
+SELECT projects.name,
+       resources.name as resource,
+       resources.description
+  FROM projects
+       JOIN
+       resources on rl.resource_id = resources.id
+       JOIN
+       resource_list as rl ON rl.project_id = projects.id
+   where projects.id = 2
+
 - [ ] Add an endpoint to get a list of project tasks.
+
+SELECT projects.name,
+       tasks.description,
+       tasks.completed
+  FROM projects
+       JOIN
+       tasks ON tasks.project_id = projects.id
+ WHERE projects.id = 2;
+
 - [ ] Add an endpoint to see all projects using a particular resource.
-- [ ] Add support for assigning `resources` directly to `tasks` in addition to adding them to `projects`
+SELECT projects.name,
+       resources.name AS resource,
+       resources.description
+  FROM projects
+       JOIN
+       resources ON resource_list.resource_id = resources.id
+       JOIN
+       resource_list ON resource_list.project_id = projects.id
+ WHERE resources.id = 5;
+
+  
+- [x] Add support for assigning `resources` directly to `tasks` in addition to adding them to `projects`
 
 ## Submission format
 
