@@ -27,7 +27,16 @@ function getProjects(id) {
       .then(([id]) => mappers.projectToBody({...project, id: id}));
   }
 
+  function findResources(id) {
+    return db('projects as p')
+        .join('resource_list as rl', 'p.id', 'rl.project_id')
+        .join('resources as r', 'p.id', 'rl.resource_id')
+        .select('p.name', 'r.name as resource', 'r.description')
+        .where({ project_id: id });
+}
+
 module.exports = {
     getProjects,
-    insert
+    insert,
+    findResources
 }

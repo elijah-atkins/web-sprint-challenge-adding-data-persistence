@@ -13,6 +13,15 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+router.get("/:id/resources", async (req, res, next) => {
+  try {
+    const projectResorces = await db.findResources();
+    res.json(projectResorces);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.post("/", validateProjectBody, async (req, res, next) => {
   try {
     const newProject = await db.insert(req.body);
