@@ -147,3 +147,24 @@ Follow these steps for completing your project.
 - [x] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo). **Please don't merge your own pull request**
 - [x] Add your team lead as a reviewer on the pull-request
 - [x] Your team lead will count the project as complete after receiving your pull-request
+
+
+## Api Endpoints
+
+| Method | URL | Description | 
+
+|-------------------------------------------------------------- |
+
+| POST   | /api/projects     | Creates a project using the information sent inside the `request body`.                                   |
+| GET    | /api/projects     | Returns an array of projects.                                                                                |
+| GET    | /api/projects/:id | Returns the project object with the specified `id`.  
+
+|-------------------------------------------------------------- |
+
+| POST   | /api/tasks     | Creates a task using the information sent inside the `request body`.                                   |
+| GET    | /api/tasks     | Returns an array of tasks.        
+
+|-------------------------------------------------------------- |
+
+| POST   | /api/resources     | Creates a resource using the information sent inside the `request body`.                                   |
+| GET    | /api/resources     | Returns an array of resources.        

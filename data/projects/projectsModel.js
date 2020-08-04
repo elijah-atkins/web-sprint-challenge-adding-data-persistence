@@ -28,12 +28,25 @@ function getProjects(id) {
   }
 
   function findResources(id) {
+
     return db('projects as p')
-        .join('resource_list as rl', 'p.id', 'rl.project_id')
-        .join('resources as r', 'p.id', 'rl.resource_id')
-        .select('p.name', 'r.name as resource', 'r.description')
-        .where({ project_id: id });
+    .join('resource_list as rl', 'rl.project_id', 'p.id')
+        .join('resources as r', 'rl.resource_id', 'r.id')
+        .join('tasks as t', 'rl.task_id', 't.id')
+        .select('t.description as task', 'r.name', 'r.description')
+        .where('rl.project_id', '=', id)
+
 }
+
+// SELECT projects.name,
+//        resources.name as resource,
+//        resources.description
+//   FROM projects
+//        JOIN
+//        resources on rl.resource_id = resources.id
+//        JOIN
+//        resource_list as rl ON rl.project_id = projects.id
+//    where projects.id = 2
 
 module.exports = {
     getProjects,
